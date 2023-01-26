@@ -1,29 +1,11 @@
 from functions import *
 import sys
 import itertools
-from tables import table as t
 #NUM class
+
 # Num class inherited from global object class
 # and it's related methods implemented inside of NUM class
-
-class obj:
-    id = 0
-
-
-    @classmethod
-    def update(cls):
-        cls.id = cls.id + 1
-
-    def __init__(self, s: str):
-        self.t_metatable = {}
-        self.t = {}
-        obj.update()
-        obj.add_child(self, s)
-
 class NUM():
-    table = t()
-    instance_id = next(itertools.count())
-
     def __init__(self, at, txt):
         # super.__init__(s)
         self.n = 0
@@ -57,6 +39,7 @@ class NUM():
         var1 = self.m2 < 0 or self.n < 2
         var2 = 0
         var3 = ((self.m2) / (self.n - 1)) ** (0.5)
+        # print(var1, var2, var3)
         return (var1 and var2) or var3
 
     def rnd(self, x, n):
@@ -64,6 +47,7 @@ class NUM():
             return x
         else:
             return round_n(x, n)
+
 
 
 
@@ -114,4 +98,7 @@ class SYM():
             e_n = e_n + fun(n_cur / self.n)
 
         return (-1) * e_n
+
+    def rnd(self, x, n=0):
+        return x
 

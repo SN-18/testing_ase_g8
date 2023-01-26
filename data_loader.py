@@ -7,7 +7,6 @@ def csv(sFilename,fun):
 
     src=filename
     s=t=None
-    t = dict()
     while True:
         s=src.readline()
         # print(s)
@@ -17,7 +16,7 @@ def csv(sFilename,fun):
             # mo=re.search(regex,s)
             # print("current mo is printed here",mo)
 
-            # t=dict()
+            t=dict()
             for s1 in s.split(','):
                 index=len(t)+1
                 t[index]=coerce(s1)
@@ -29,17 +28,21 @@ def csv(sFilename,fun):
 
 
     # print(t)
-    return t
+    return src.close()
+
+
+            # src.close()
 
 
 
-#Data Class
+
+
 class DATA:
     index=0
     def __init__(self,src):
         self.rows=dict()
         self.cols=None
-
+        self.index = 0
         #for the function called fun
         def fun(x):
             self.add(x)
@@ -59,8 +62,8 @@ class DATA:
             else:
                 t=ROW(t)
 
-            self.rows[DATA.index]=t
-            DATA.index=DATA.index + 1
+            self.rows[self.index]=t
+            self.index=self.index + 1
             # if COLS.index==t.len_row():
             #     COLS.index=0
             self.cols.add(t)
@@ -76,17 +79,12 @@ class DATA:
     def stats(self,what, cols, nPlaces):
         def fun(k,col):
             if what=="div":
-                print("I'm printing col.div() inside of stats function")
-                print(col.div())
                 val=col.rnd(col.div(), nPlaces)
 
             elif what=="mid":
-                # print("I'm printing col.mid() inside of mid ")
-                # print(col.mid())
                 val=col.rnd(col.mid(), nPlaces)
 
             return val,col.txt
-
 
 
         return kap_co(cols or self.cols.y,fun)

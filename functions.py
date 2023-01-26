@@ -43,9 +43,6 @@ def sort_co(t, fun):
 def keys_co(t):
     return sorted(t.keys())
 
-
-
-
 def coerce(s):
     # inner function
 
@@ -68,6 +65,3 @@ def coerce(s):
                     return mo.group(2)
                 except:
                     return s
-
-    def rnd(x, n):
-        return x
